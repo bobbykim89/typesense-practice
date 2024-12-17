@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import Search from "./components/Search.vue";
+import Search from './components/Search.vue'
 </script>
 
 <template>
-  <div id="app">
-    <Search />
-  </div>
+  <section class="relative bg-dark-1 py-sm">
+    <div class="container px-2xs lg:px-xs mx-auto">
+      <div class="max-w-screen-lg py-sm px-xs bg-dark-3 rounded-md mx-auto">
+        <Search />
+      </div>
+    </div>
+  </section>
 </template>
 
-<style scoped>
-#app {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin-top: 2em;
-}
-</style>
+<style scoped></style>
