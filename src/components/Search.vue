@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { MclFormGroup, MclInputText } from '@bobbykim/mcl-forms'
 import { ref } from 'vue'
 import { typesenseClient } from '../typesense'
-import { MclFormGroup, MclInputText } from '@bobbykim/mcl-forms'
 
 const query = ref<string>('')
 const results = ref<any>([])
@@ -29,7 +29,7 @@ const resetSearchResults = () => {
 </script>
 
 <template>
-  <div>
+  <div @keyup.esc="resetSearchResults">
     <form @submit.prevent="search">
       <MclFormGroup
         label="Search"
@@ -86,11 +86,11 @@ const resetSearchResults = () => {
       </MclFormGroup>
     </form>
     <div class="min-h-[30vh] bg-dark-1 rounded-md mt-xs px-2xs py-xs">
-      <ul>
+      <TransitionGroup name="fade" tag="ul">
         <li
           v-for="item in results"
           :key="item.id"
-          class="mb-2xs last:mb-0 rounded-md bg-dark-3 !px-xs py-2xs flex gap-6"
+          class="mb-2xs last:mb-0 rounded-md bg-dark-3 px-xs py-2xs flex gap-6"
         >
           <img
             :src="item.image_url"
@@ -108,24 +108,21 @@ const resetSearchResults = () => {
         <li v-if="results.length === 0" class="text-center text-light-3">
           No results...
         </li>
-      </ul>
+      </TransitionGroup>
     </div>
   </div>
 </template>
 
 <style scoped>
-input {
-  padding: 0.5em;
-  margin: 0.5em 0;
-  width: 100%;
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+  transition-duration: 300ms;
+  transition-timing-function: linear;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  padding: 0.5em 0;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
