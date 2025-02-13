@@ -12,7 +12,10 @@ const search = async () => {
       const searchResults = await typesenseClient
         .collections('books')
         .documents()
-        .search({ q: query.value, query_by: 'title, authors' })
+        .search({
+          q: query.value,
+          query_by: 'title, authors',
+        })
       results.value = searchResults.hits?.map((hit) => hit.document)
       console.log(results.value)
     } catch (error) {
@@ -36,7 +39,7 @@ const resetSearchResults = () => {
         label-for="search-input"
         text-color="light-1"
       >
-        <div class="flex gap-4">
+        <div class="flex gap-2">
           <MclInputText
             class="w-full"
             id="search-input"
@@ -46,7 +49,7 @@ const resetSearchResults = () => {
             :display-highlight="false"
           ></MclInputText>
           <button
-            class="text-light-1 btn btn-warning"
+            class="text-light-1 bg-warning rounded-full aspect-square !w-[40px] !h-[40px] flex justify-center items-center focus:ring-4 ring-warning ring-offset-2 ring-offset-dark-3 transition-shadow duration-300 ease-linear"
             aria-label="search"
             role="button"
             type="submit"
@@ -64,7 +67,7 @@ const resetSearchResults = () => {
             </svg>
           </button>
           <button
-            class="text-light-1 btn btn-danger"
+            class="text-light-1 bg-danger rounded-full aspect-square !w-[40px] !h-[40px] flex justify-center items-center focus:ring-4 ring-danger ring-offset-2 ring-offset-dark-3 transition-shadow duration-300 ease-linear"
             aria-label="clear"
             role="button"
             type="reset"

@@ -7,15 +7,18 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "typesense:run": "docker-compose up typesense -d",
-    "typesense:rm": "docker-compose rm typesense -s -f -v",
+    "typesense:run": "docker compose up typesense -d",
+    "typesense:rm": "docker compose rm typesense -s -f -v",
     "create-collection": "node ./script/create_collection.mjs",
-    "import-data": "node ./script/import_data.mjs"
+    "import-data": "node ./script/import_data.mjs",
+    "sync:program-data": "node ./script/sync_graphql.mjs"
   },
   "dependencies": {
     "@bobbykim/manguito-theme": "^0.23.0",
     "@bobbykim/mcl-forms": "^0.9.0",
     "@vueuse/core": "^12.0.0",
+    "graphql": "^16.10.0",
+    "graphql-request": "^7.1.2",
     "typesense": "^1.8.2",
     "vite-plugin-env-compatible": "^2.0.1",
     "vue": "^3.5.13",
