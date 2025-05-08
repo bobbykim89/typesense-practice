@@ -15,6 +15,9 @@
             <RouterLink to="/program-search">
               <div class="text-center text-light-3 text-lg mb-sm">PROGRAMS</div>
             </RouterLink>
+            <RouterLink to="/embedded-search">
+              <div class="text-center text-light-3 text-lg mb-sm">SEMANTIC</div>
+            </RouterLink>
             <RouterLink to="/about">
               <div class="text-center text-light-3 text-lg">ABOUT</div>
             </RouterLink>
